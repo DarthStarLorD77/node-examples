@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 const express = require("express");
 const cookieParser = require('cookie-parser')
+=======
+// const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
+const express = require("express");
+const bcrypt = require("bcrypt");
+const authRouter = require("./routs/auth");
+const userRouter = require("./routs/user");
+>>>>>>> 96a9bb4baebd5f0e858ec4aeac17d72d3f967d0c
 
 const app = express();
 
 app.set("view engine", "ejs");
+<<<<<<< HEAD
 app.use(express.urlencoded({ extendend: true}));
 app.use(cookieParser());
 
@@ -59,3 +69,18 @@ app.post('/logout', (req, res) => {
 });
 
 app.listen(3010, () => console.log("server running on port 3010"));
+=======
+app.use(express.urlencoded({ extended: true }));
+// app.use(cookieParser());
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
+
+app.use("/auth", authRouter);
+app.use("/user", userRouter);
+
+app.listen(8080, () => console.log("server running 8080"));
+>>>>>>> 96a9bb4baebd5f0e858ec4aeac17d72d3f967d0c
