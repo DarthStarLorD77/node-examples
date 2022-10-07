@@ -14,8 +14,8 @@ app.use(express.static(path.join(__dirname, "public")));
 io.on("connection", (socket) => {
   console.log("A player has connected");
 
-  socket.on("click", (click) => {
-    io.emit("click", click);
+  socket.on("move", (move) => {
+    io.emit("new_move", move);
   });
 
   socket.on("disconnect", () => {
