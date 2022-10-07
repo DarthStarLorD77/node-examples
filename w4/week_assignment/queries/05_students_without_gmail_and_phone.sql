@@ -1,0 +1,2 @@
+SELECT name, id, email, class_id FROM students
+WHERE NOT email LIKE '%@gmail.com' AND phone IS NULL;
